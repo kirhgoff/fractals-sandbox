@@ -1,6 +1,4 @@
 package org.kirhgoff.fractals;
-import static org.junit.Assert.*;
-
 import java.awt.Dimension;
 import java.awt.Point;
 
