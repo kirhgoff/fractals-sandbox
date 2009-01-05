@@ -22,8 +22,8 @@ public class Complex {
 		return Math.abs(real - other.real) < EPSILON && Math.abs(imagine - other.imagine) < EPSILON;
 	}
 	
-	public double distance () {
-		return Math.sqrt(real*real + imagine*imagine);
+	public boolean isInfinite () {
+		return real > 100 && imagine > 100;
 	}
 
 }

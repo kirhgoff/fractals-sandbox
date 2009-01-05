@@ -65,8 +65,8 @@ public class FractalPanel extends JComponent {
 	private int[] buildPixelsMatrix(int width, int height) {
 		int [] pixels = new int [width*height];
 		int index = 0;
-		for (int x = 0; x < width; x++) {
-			for (int y = 0; y < height; y++) {
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++){
 				int colorIndex = conversion.getColorIndex(x, y);
 				pixels [index++] = (colorIndex << 24) | (colorIndex << 16) | (colorIndex);
 			}

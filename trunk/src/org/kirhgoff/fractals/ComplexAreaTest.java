@@ -7,27 +7,30 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class ComplexAreaTest {
+	@Ignore
 	@Test
 	public void testSimpleFunctor() throws Exception {
-		Functor functor = new SimpleFunctor ();
+		Functor functor = new MandelbrotFunctor ();
 		Assert.assertEquals (new Complex (-1, 2), functor.getNext(new Complex (1, 1)));
 	}
 	@Test
 	public void testInfinity() throws Exception {
-		Conversion conversion = new Conversion (new Dimension (800, 800));
-		Assert.assertEquals(-2, conversion.convertX(0));
+		Conversion conversion = new Conversion (new Dimension (400, 800));
+		conversion.setCoord(new Coord (-6.0, 2.0, -2.0, 2.0));
+		Assert.assertEquals(-6, conversion.convertX(0));
 		Assert.assertEquals(2, conversion.convertY(0));
-		Assert.assertEquals(2, conversion.convertX(800));
+		Assert.assertEquals(2, conversion.convertX(400));
 		Assert.assertEquals(-2, conversion.convertY(800));
-		Assert.assertEquals(0, conversion.convertX(400));
+		Assert.assertEquals(-2, conversion.convertX(200));
 		Assert.assertEquals(0, conversion.convertY(400));
 
-		conversion.setNewPoints(new Point (200, 200), new Point (600, 600));
-		Assert.assertEquals(-1, conversion.convertX(0));
+		//
+		conversion.setNewPoints(new Point (100, 100), new Point (300, 600));
+		Assert.assertEquals(-4, conversion.convertX(0));
 		Assert.assertEquals(1, conversion.convertY(0));
-		Assert.assertEquals(1, conversion.convertX(800));
-		Assert.assertEquals(-1, conversion.convertY(800));
 		Assert.assertEquals(0, conversion.convertX(400));
+		Assert.assertEquals(-1, conversion.convertY(800));
+		Assert.assertEquals(-2, conversion.convertX(200));
 		Assert.assertEquals(0, conversion.convertY(400));
 	}
 
@@ -58,5 +61,12 @@ public class ComplexAreaTest {
 		Assert.assertArrayEquals(new byte [] {3, 4, 1, 2}, PaletteScroller.rotateBackward(array));
 		Assert.assertArrayEquals(new byte [] {4, 1, 2, 3}, PaletteScroller.rotateBackward(array));
 		Assert.assertArrayEquals(new byte [] {1, 2, 3, 4}, PaletteScroller.rotateBackward(array));		
+	}
+	
+	@Test
+	public void testAspectRatio() throws Exception {
+		Assert.assertEquals (new Point (200, 300), Zoomer.adjustToAspectRatio(new Dimension (200, 400), new Point (100, 100), new Point (200, 400)));
+		Assert.assertEquals (new Point (150, 100), Zoomer.adjustToAspectRatio(new Dimension (200, 100), new Point (50, 50), new Point (200, 100)));
+
 	}
 }

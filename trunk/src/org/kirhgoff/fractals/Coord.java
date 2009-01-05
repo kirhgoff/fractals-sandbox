@@ -1,10 +1,10 @@
 package org.kirhgoff.fractals;
 
 public class Coord implements Cloneable{
-	private double minX = -2.0;
-	private double maxX = 2.0;
-	private double minY = -2.0;
-	private double maxY = 2.0;
+	private double minX;
+	private double maxX;
+	private double minY;
+	private double maxY;
 	
 	public Coord(double minX, double maxX, double minY, double maxY) {
 		this.minX = minX;
@@ -33,7 +33,7 @@ public class Coord implements Cloneable{
 	
 	@Override
 	public String toString() {
-		return "Coords: [" + minX + ", " + minX + ", " + maxX + ", " + maxY + "]";
+		return "Coords: [" + minX + ", " + maxX + ", " + minY + ", " + maxY + "]";
 	}
 	
 	@Override
