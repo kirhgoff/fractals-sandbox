@@ -1,4 +1,6 @@
 package org.kirhgoff.fractals;
+
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
@@ -7,23 +9,17 @@ import java.awt.image.IndexColorModel;
 import java.awt.image.MemoryImageSource;
 
 public class PaletteScroller extends KeyAdapter {
-	private byte[] reds = new byte[256];
-	private byte[] greens = new byte[256];
-	private byte[] blues = new byte[256];
+	private byte[] saturation = new byte[256];
 	private int[] pixels;
 	private int width;
 	private int height;
 
 	private final FractalPanel panel;
 
-
 	public PaletteScroller(FractalPanel panel) {
 		this.panel = panel;
 		for (int i = 0; i < 255; i++) {
-			System.out.println(i);
-			reds[i] = (byte) i;
-			greens[i] = (byte) i;
-			blues[i] = (byte) i;
+			saturation[i] = (byte) (i);
 		}
 	}
 
@@ -31,35 +27,13 @@ public class PaletteScroller extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyChar() == 'q') {
 			synchronized (this) {
-				reds = rotateForward(reds);
+				saturation = rotateForward(saturation);
 			}
-		}
-		else if (e.getKeyChar() == 'w') {
+		} else if (e.getKeyChar() == 'w') {
 			synchronized (this) {
-				reds = rotateBackward(reds);
+				saturation = rotateBackward(saturation);
 			}
 		}
-		if (e.getKeyChar() == 'a') {
-			synchronized (this) {
-				greens = rotateForward(greens);
-			}
-		}
-		else if (e.getKeyChar() == 's') {
-			synchronized (this) {
-				greens = rotateBackward(greens);
-			}
-		}
-		else if (e.getKeyChar() == 'z') {
-			synchronized (this) {
-				blues = rotateForward(blues);
-			}
-		}
-		else if (e.getKeyChar() == 'x') {
-			synchronized (this) {
-				blues = rotateBackward(blues);
-			}
-		}
-
 
 		panel.setImage(getImage(pixels, width, height));
 		panel.repaint();
@@ -88,12 +62,20 @@ public class PaletteScroller extends KeyAdapter {
 		this.pixels = pixels;
 		this.width = width;
 		this.height = height;
-
-		IndexColorModel colorModel = new IndexColorModel(8, 256, reds, greens,
-				blues);
+		
+		byte newReds [] = new byte [saturation.length];
+		byte newGreens [] = new byte [saturation.length];
+		byte newBlues [] = new byte [saturation.length];
+		
+		for (int i = 0; i < saturation.length; i++) {
+			Color color = Color.getHSBColor(saturation [i]/255.0F,1F,1F);
+			newReds [i] = (byte) color.getRed();
+			newGreens [i] = (byte) color.getGreen();
+			newBlues [i] = (byte) color.getBlue();
+		}
+		IndexColorModel colorModel = new IndexColorModel(8, 256, newReds, newGreens, newBlues);
 		Image image = Toolkit.getDefaultToolkit().createImage(
-				new MemoryImageSource(width, height, colorModel, pixels, 0,
-						width));
+				new MemoryImageSource(width, height, colorModel, pixels, 0, width));
 		return image;
 	}
 

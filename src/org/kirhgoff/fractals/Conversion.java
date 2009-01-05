@@ -4,7 +4,7 @@ import java.awt.Point;
 
 public class Conversion {
 	private Dimension size;
-	private Coord coords = new Coord (-2.0, 2.0, -2.0, 2.0);
+	private Coord coords = new Coord (-2.0, 0.5, -1.5, 1.5);
 	
 	public Conversion(Dimension size2) {
 		this.size = size2;
@@ -14,25 +14,17 @@ public class Conversion {
 		double xReal = convertX(x);
 		double yReal = convertY(y);
 		int colorComponent = ComplexProcessor.timeToInfinity(
-				new SimpleFunctor(), new Complex(xReal, yReal));
+				new MandelbrotFunctor(), new Complex(xReal, yReal));
 		return colorComponent;
 	}
 
 
 	public double convertY(int y) {
-		return - y *  getHeightReal()/ size.height + coords.getMaxY ();
+		return -y * (coords.getMaxY () - coords.getMinY ()) / size.height + coords.getMaxY ();
 	}
 
 	public double convertX(int x) {
-		return coords.getMinX () + x * getWidthReal() / size.width;
-	}
-
-	private double getWidthReal() {
-		return Math.abs(coords.getMaxX () - coords.getMinX ());
-	}
-
-	private double getHeightReal() {
-		return Math.abs(coords.getMaxY () - coords.getMinY ());
+		return x * (coords.getMaxX () - coords.getMinX ()) / size.width + coords.getMinX ();
 	}
 
 	public void setSize(Dimension size) {
@@ -46,7 +38,7 @@ public class Conversion {
 		double newMaxY = convertY (start.y);
 	
 		coords = new Coord (newMinX, newMaxX, newMinY, newMaxY);
-		System.out.println("new points start=" + start + " end=" + end);
+		System.out.println("new points start=" + start + " end=" + end + " coords=" + coords);
 		System.out.println(coords);
 	}
 
