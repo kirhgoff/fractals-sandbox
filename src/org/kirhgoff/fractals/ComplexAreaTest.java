@@ -5,6 +5,8 @@ import java.awt.Point;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.kirhgoff.fractals.controllers.PaletteScroller;
+import org.kirhgoff.fractals.controllers.Zoomer;
 
 public class ComplexAreaTest {
 	@Ignore

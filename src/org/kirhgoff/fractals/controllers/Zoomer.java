@@ -1,4 +1,4 @@
-package org.kirhgoff.fractals;
+package org.kirhgoff.fractals.controllers;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -8,6 +8,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.util.Stack;
+
+import org.kirhgoff.fractals.Coord;
+import org.kirhgoff.fractals.FractalPanel;
 
 public class Zoomer extends MouseAdapter {
 	private static final int GAP = 4;
@@ -43,7 +46,7 @@ public class Zoomer extends MouseAdapter {
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		if (history.isEmpty()) return;
 		Coord pop = history.pop();
-		component.conversion.setCoord (pop);
+		component.getConversion().setCoord (pop);
 		component.setImage (null);
 		component.repaint();
 	}
@@ -53,9 +56,9 @@ public class Zoomer extends MouseAdapter {
 		System.err.println("Released: " + event);
 		synchronized (this) {
 			dragging = false;
-			history.push(component.conversion.getCoord ());
+			history.push(component.getConversion().getCoord ());
 			System.out.println("setting new coords: " + start + ", " + end);
-			component.conversion.setNewPoints(start, end);
+			component.getConversion().setNewPoints(start, end);
 			component.setImage (null);
 			component.repaint();
 		}
@@ -117,6 +120,6 @@ public class Zoomer extends MouseAdapter {
 
 	private String point2String(Point p) {
 		return "[" + p.x + ", " + p.y + "] " +
-			"[" + component.conversion.convertX(p.x) + ", " + component.conversion.convertY(p.y);
+			"[" + component.getConversion().convertX(p.x) + ", " + component.getConversion().convertY(p.y);
 	}
 }

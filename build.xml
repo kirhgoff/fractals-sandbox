@@ -1,0 +1,9 @@
+<project name="fractals-explorer" default="build">
+	<target name="build">
+		<jar destfile="org.kirhgoff.fractal-explorer.jar">
+			<fileset dir="bin">
+				<include name="**/*.class"/>
+			</fileset>
+		</jar>
+	</target>
+</project>

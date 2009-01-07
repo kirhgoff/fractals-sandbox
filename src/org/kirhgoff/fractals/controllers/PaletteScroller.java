@@ -1,4 +1,4 @@
-package org.kirhgoff.fractals;
+package org.kirhgoff.fractals.controllers;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -7,6 +7,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.IndexColorModel;
 import java.awt.image.MemoryImageSource;
+
+import org.kirhgoff.fractals.FractalPanel;
 
 public class PaletteScroller extends KeyAdapter {
 	private byte[] saturation = new byte[256];
