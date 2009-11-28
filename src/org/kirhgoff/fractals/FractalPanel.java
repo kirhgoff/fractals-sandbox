@@ -8,6 +8,7 @@ import javax.swing.JComponent;
 
 import org.kirhgoff.fractals.controllers.PaletteScroller;
 import org.kirhgoff.fractals.controllers.Zoomer;
+import org.kirhgoff.fractals.math.Conversion;
 
 public class FractalPanel extends JComponent {
 
@@ -68,5 +69,10 @@ public class FractalPanel extends JComponent {
 	
 	public KeyListener asKeyListener () {
 		return paletteScroller;
+	}
+	
+	@Override
+	public boolean isFocusTraversable() {
+		return true;
 	}
 }

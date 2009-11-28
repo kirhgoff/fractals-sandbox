@@ -7,7 +7,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
-public class FractalsApplication {
+public class FractalApplication {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame ("Fractals");
 		frame.addWindowListener(new WindowAdapter() {

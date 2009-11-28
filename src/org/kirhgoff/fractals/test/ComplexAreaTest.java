@@ -1,12 +1,18 @@
-package org.kirhgoff.fractals;
+package org.kirhgoff.fractals.test;
 import java.awt.Dimension;
 import java.awt.Point;
 
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.kirhgoff.fractals.color.ColorMapper;
 import org.kirhgoff.fractals.controllers.PaletteScroller;
 import org.kirhgoff.fractals.controllers.Zoomer;
+import org.kirhgoff.fractals.math.Complex;
+import org.kirhgoff.fractals.math.Conversion;
+import org.kirhgoff.fractals.math.Coord;
+import org.kirhgoff.fractals.math.Functor;
+import org.kirhgoff.fractals.math.MandelbrotFunctor;
 
 public class ComplexAreaTest {
 	@Ignore

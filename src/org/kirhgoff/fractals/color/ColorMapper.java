@@ -1,5 +1,6 @@
-package org.kirhgoff.fractals;
+package org.kirhgoff.fractals.color;
 import java.awt.Color;
+
 
 
 public class ColorMapper {
@@ -11,15 +12,15 @@ public class ColorMapper {
 		return new Color (red(colorComponent), green(colorComponent), blue(colorComponent));
 	}
 	
-	protected int red (int component) {
+	public int red (int component) {
 		return redGradient.getColor(component);
 	}
 	
-	protected int blue (int component) {
+	public int blue (int component) {
 		return blueGradient.getColor(component);
 	}
 
-	protected int green (int component) {
+	public int green (int component) {
 		return greenGradient.getColor(component);
 	}
 

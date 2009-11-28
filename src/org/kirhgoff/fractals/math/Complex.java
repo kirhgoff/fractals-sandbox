@@ -1,4 +1,4 @@
-package org.kirhgoff.fractals;
+package org.kirhgoff.fractals.math;
 
 public class Complex {
 	private static final double EPSILON = 1E-14;
