@@ -3,7 +3,7 @@ package org.kirhgoff.fractals;
 import javax.swing.JApplet;
 import javax.swing.SwingUtilities;
 
-public class FractalsApplet extends JApplet {
+public class FractalApplet extends JApplet {
 
 	private static final long serialVersionUID = 2123707524426851709L;
 	private FractalPanel panel;
@@ -41,5 +41,8 @@ public class FractalsApplet extends JApplet {
         panel = null;
     }
 
-
+    @Override
+    public boolean isFocusTraversable() {
+    	return true;
+    }
 }

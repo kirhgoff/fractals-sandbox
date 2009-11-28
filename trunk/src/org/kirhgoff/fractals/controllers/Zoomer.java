@@ -9,8 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.util.Stack;
 
-import org.kirhgoff.fractals.Coord;
 import org.kirhgoff.fractals.FractalPanel;
+import org.kirhgoff.fractals.math.Coord;
 
 public class Zoomer extends MouseAdapter {
 	private static final int GAP = 4;

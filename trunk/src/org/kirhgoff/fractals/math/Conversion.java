@@ -1,4 +1,4 @@
-package org.kirhgoff.fractals;
+package org.kirhgoff.fractals.math;
 import java.awt.Dimension;
 import java.awt.Point;
 

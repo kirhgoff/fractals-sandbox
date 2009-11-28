@@ -1,4 +1,4 @@
-package org.kirhgoff.fractals;
+package org.kirhgoff.fractals.math;
 
 public class ComplexProcessor {
 	private static final int ITERATIONS = 255;

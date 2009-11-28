@@ -1,4 +1,5 @@
-package org.kirhgoff.fractals;
+package org.kirhgoff.fractals.color;
+
 
 public class MonoGradient extends Gradient {
 

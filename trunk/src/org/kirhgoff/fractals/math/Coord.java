@@ -1,4 +1,4 @@
-package org.kirhgoff.fractals;
+package org.kirhgoff.fractals.math;
 
 public class Coord implements Cloneable{
 	private double minX;
