@@ -1,0 +1,1 @@
+Sandbox application to create fractals images, play with the palette, save the images to disk, create movies with changing fractals etc.
